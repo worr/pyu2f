@@ -41,6 +41,9 @@ def InternalPlatformSwitch(funcname, *args, **kwargs):
   elif sys.platform.startswith('darwin'):
     from pyu2f.hid import macos
     clz = macos.MacOsHidDevice
+  elif sys.platform.startswith('openbsd'):
+    from pyu2f.hid import openbsd
+    clz = openbsd.OpenBSDHidDevice
 
   if not clz:
     raise Exception('Unsupported platform: ' + sys.platform)
